@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 
 import Send from '@mui/icons-material/Send'
 import { AccordionLayer } from "../../../components/AccordionLayer";
@@ -120,7 +120,7 @@ function Page2(props: { language: string; }) {
         }
         
         setListOfLayerParams(newArray)
-    })
+    }, [])
 
     const handlerChangeRadio = (value: number) => {
         setAngle(value)
