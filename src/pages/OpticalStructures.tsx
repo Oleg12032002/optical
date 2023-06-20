@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useMemo } from 'react';
 import optics1 from '../images/optics1.jpeg';
 import optics2 from '../images/optics2.jpeg';
 import optics3 from '../images/optics3.jpeg';
@@ -11,7 +11,8 @@ import { LanguageContextType } from '../Interfaces/PropsInteface';
 
 function OpticalStructures(props: { language: string; }) {
   const {language} = useContext(LanguageContext) as LanguageContextType;
-  let data = {
+  let data = useMemo( () => {
+    return {
     en:{
       title:"OPTICAL COATINGS",
       subt1: "Illuminating coatings.",
@@ -407,7 +408,8 @@ function OpticalStructures(props: { language: string; }) {
   коефіцієнтів відбивання. Основна складність при виготовленні таких покриттів полягає у відтворенні розрахункового
   розподілу товщини шарів по поверхні елементу, що вимагає проведення відповідних досліджень`
     }
-   };
+   }
+  }, []);
 
    const [strings, setStrings] = useState(language==="en"?data["en"]:data["ua"]||null);
    useEffect(()=>{setStrings(language==="en"?data["en"]:data["ua"]||null)},[data, language])

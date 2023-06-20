@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
@@ -15,7 +15,8 @@ function OpticalNumbers(props: { language: any; }) {
   // }	else {
   //   strings.setLanguage('ua')
   // }
-  let data = {
+  let data = useMemo( () => {
+    return {
     en:{ title:"INDICES OF REFRACTION",
      subt: "Matter",
      subt2: "Refractive index",
@@ -62,7 +63,8 @@ function OpticalNumbers(props: { language: any; }) {
      r:"Арсенід галію",
      s:"Кремній"
     }
-   };
+   }
+  }, []);
   const [strings, setStrings] = useState(language==="en"?data["en"]:data["ua"]||null);
 useEffect(()=>{setStrings(language==="en"?data["en"]:data["ua"]||null)},[data, language])
 return <div style={{margin:'40px'}}>

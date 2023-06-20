@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useMemo, useState } from "react";
 
 import Send from '@mui/icons-material/Send'
 import { AccordionLayer } from "../../../components/AccordionLayer";
@@ -21,7 +21,8 @@ import { LanguageContext } from "../../../Context/myContext";
 
 function Page2(props: { language: string; }) {
     const {language} = useContext(LanguageContext) as LanguageContextType;
-    let data2 = {
+    let data2 = useMemo( () => {
+        return {
         en:{
           par1:"Structure parameters",
           par2:"Structure parameters",
@@ -60,7 +61,8 @@ function Page2(props: { language: string; }) {
            layern:"Номер шару",
            opt:"Оптимальне значення коефіцієнта пропускання"
          }
-       };
+       }
+    }, []);
 
        const [strings, setStrings] = useState(language==="en"?data2["en"]:data2["ua"]||null);
 

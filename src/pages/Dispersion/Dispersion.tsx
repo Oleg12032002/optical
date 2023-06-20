@@ -1,51 +1,53 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import Send from '@mui/icons-material/Send'
 import { AccordionLayer } from "../../components/Accordion2";
-import { ResultCalculationForChart } from "../../Interfaces/PropsInteface";
+import { LanguageContextType, ResultCalculationForChart } from "../../Interfaces/PropsInteface";
 import { Slider, TextField, Button } from "@mui/material";
 import DisplayChart from "../DisplayChart";
 
 import { myFunction } from "./CalculationDispersion"
+import { LanguageContext } from "../../Context/myContext";
 
 
 function Dispersion (props: { language: string; })  {
-    //const {language} = useContext(LanguageContext) as LanguageContextType;
-    let language = 'ua'
+    const {language} = useContext(LanguageContext) as LanguageContextType;
 
-    let data2 = {
-        en:{
-          par1:"Structure parameters",
-          par2:"Structure parameters",
-          par3:"Structure parameters",
-          ind1:"Refractive index of the medium",
-          ind2:"Refractive index of the substrate",
-          layers:"Number of known points",
-          freq:"Wave range",
-          layer:"Layer",
-          angles:"Angles of incidence",
-          graph:"Dispersion graph",
-          refr:"Refractive index",
-          density:"Density",
-          apply:"APPLY",
-          showgraph:"SHOW POLARIZATION GRAPH",
-       },
-        ua: {
-           par1:"Параметри структури",
-           par2:"Параметри структури",
-           par3:"Параметри структури",
-           ind1:"Показник заломлення середовища",
-           ind2:"Показник заломлення підкладки",
-           layers:"Кількість відомих точок",
-           freq:"Діапазон хвиль",
-           layer:"Шар",
-           angles:"Кути падіння",
-           graph:"Графік дисперсії",
-           refr:"Показник заломлення",
-           density:"Товщина",
-           apply:"ПРИЙНЯТИ",
-           showgraph:"ПОКАЗАТИ ГРАФІК ДИСПЕРСІЇ",
-         }
-       }
+    let data2 = useMemo(() => {
+        return {
+            en:{
+            par1:"Structure parameters",
+            par2:"Structure parameters",
+            par3:"Structure parameters",
+            ind1:"Refractive index of the medium",
+            ind2:"Refractive index of the substrate",
+            layers:"Number of known points",
+            freq:"Wave range",
+            layer:"Layer",
+            angles:"Angles of incidence",
+            graph:"Dispersion graph",
+            refr:"Refractive index",
+            density:"Density",
+            apply:"APPLY",
+            showgraph:"SHOW POLARIZATION GRAPH",
+        },
+            ua: {
+            par1:"Параметри структури",
+            par2:"Параметри структури",
+            par3:"Параметри структури",
+            ind1:"Показник заломлення середовища",
+            ind2:"Показник заломлення підкладки",
+            layers:"Кількість відомих точок",
+            freq:"Діапазон хвиль",
+            layer:"Шар",
+            angles:"Кути падіння",
+            graph:"Графік дисперсії",
+            refr:"Показник заломлення",
+            density:"Товщина",
+            apply:"ПРИЙНЯТИ",
+            showgraph:"ПОКАЗАТИ ГРАФІК ДИСПЕРСІЇ",
+            }
+        }
+       }, [])
 
     const [strings, setStrings] = useState(language==="en"?data2["en"]:data2["ua"]||null);
 
