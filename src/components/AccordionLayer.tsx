@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -19,7 +19,8 @@ import { LanguageContext } from "../Context/myContext";
 
 export function AccordionLayer(props: { language: string; n: number | (() => number); d: number | (() => number); handlerChangeParam: (arg0: any, arg1: number, arg2: number) => void; index: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined; }) {
 	const {language} = useContext(LanguageContext) as LanguageContextType;
-    let data = {
+    let data = useMemo( () => {
+      return {
     en:{
       layer:"Layer",
       density:"Density",
@@ -32,7 +33,8 @@ export function AccordionLayer(props: { language: string; n: number | (() => num
      ind:"Показник заломлення", 
      apply:"ПРИЙНЯТИ"
      }
-};
+}
+    }, []);
 
 const [strings, setStrings] = useState(language==="en"?data["en"]:data["ua"]||null);
 useEffect(()=>{setStrings(language==="en" ? data["en"] : data["ua"] || null)},[data, language])

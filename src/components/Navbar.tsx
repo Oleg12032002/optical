@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useMemo } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
@@ -11,7 +11,8 @@ import { LanguageContextType } from '../Interfaces/PropsInteface';
 
 function Navbar(props: any) {
 	const {language} = useContext(LanguageContext) as LanguageContextType;
-    let data = {
+    let data = useMemo( () => {
+        return {
     en: {
         home: "Home",
         os: "Optical structures",
@@ -35,6 +36,7 @@ function Navbar(props: any) {
         opt: "Оптимізація параметрів"
     }
 }
+    }, [])
     // const {language, setLanguage} = useLanguage();
 
     const {update} = useContext(LanguageContext) as LanguageContextType;
