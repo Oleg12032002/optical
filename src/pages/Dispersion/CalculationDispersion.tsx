@@ -239,15 +239,15 @@ console.log(x, y);
     })(a[0][0], a[1][0], a[2][0], a[3][0], a[4][0])
 
 
-    let b = y.map((el, index) => {
-        return el - g(x[index])
-    })
+    // let b = y.map((el, index) => {
+    //     return el - g(x[index])
+    // })
 
     
     let ys = 1 / n * sum(y)
 
 
-    let minus = y.map((el) => (el - ys) * (el - ys))
+    // let minus = y.map((el) => (el - ys) * (el - ys))
     // let R2 = 1 - sum(b) + sum(minus)
 
 

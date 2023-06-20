@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import LocalizedStrings from 'react-localization';
 import { LanguageContext } from '../Context/myContext';
 import { LanguageContextType } from '../Interfaces/PropsInteface';
 
@@ -65,7 +64,7 @@ function OpticalNumbers(props: { language: any; }) {
     }
    };
   const [strings, setStrings] = useState(language==="en"?data["en"]:data["ua"]||null);
-useEffect(()=>{setStrings(language==="en"?data["en"]:data["ua"]||null)},[language])
+useEffect(()=>{setStrings(language==="en"?data["en"]:data["ua"]||null)},[data, language])
 return <div style={{margin:'40px'}}>
 
 

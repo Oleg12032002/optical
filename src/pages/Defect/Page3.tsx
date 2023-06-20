@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import Send from '@mui/icons-material/Send'
 import { AccordionLayer } from "../../components/AccordionLayer";
-import { LayerParams, ResultCalculationForChart } from "../../Interfaces/PropsInteface";
+import { LayerParams } from "../../Interfaces/PropsInteface";
 import { Slider, TextField, Button, FormControlLabel, Radio, FormControl, RadioGroup } from "@mui/material";
-import { Calculation } from "../Transmittance/Calculation";
 
 import LocalizedStrings from 'react-localization';
 import CanvasComponent from "./CanvasComponent";
@@ -51,17 +50,6 @@ function Page3(props: { language: string; }) {
     }
     const [listOfLayerParams, setListOfLayerParams] = React.useState<LayerParams[]>([]);
     const [spectrumRange, setSpectrumRange] = React.useState<number[]>([20, 37]);
-    const [arrayOfAngles, setArrayOfAngles] = React.useState<boolean[]>([
-        false, false, false, false, false, false, false, false, false, false,
-        false, false, false, false, false, false, false, false, false, false,
-        false, false, false, false, false, false, false, false, false, false,
-        false, false, false, false, false, false, false, false, false, false,
-        false, false, false, false, false, false, false, false, false, false,
-        false, false, false, false, false, false, false, false, false, false,
-        false, false, false, false, false, false, false, false, false, false,
-        false, false, false, false, false, false, false, false, false, false,
-        false,
-    ]);
     const [angle, setAngle] = React.useState<number>(1);
     const handlerChangeRadio = (value: number) => {
         setAngle(value)
@@ -105,7 +93,7 @@ function Page3(props: { language: string; }) {
     
 
 
-    const hangleChangeNumberOfLayers = () => {
+    const hangleChangeNumberOfLayers = useCallback(() => {
         const newArray: LayerParams[] = []
         
         for(let i = 0; i < numberOfLayers; i++) {
@@ -113,7 +101,7 @@ function Page3(props: { language: string; }) {
         }
         
         setListOfLayerParams(newArray)
-    }
+    }, [])
 
 
     useEffect(() => {

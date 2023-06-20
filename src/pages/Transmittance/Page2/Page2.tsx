@@ -112,7 +112,7 @@ function Page2(props: { language: string; }) {
     const [optionSetParameters, setOptionSetParameters] = React.useState<boolean>(false);
     
 
-    const hangleChangeNumberOfLayers = () => {
+    const hangleChangeNumberOfLayers = useCallback(() => {
         const newArray: LayerParams[] = []
         
         for(let i = 0; i < numberOfLayers; i++) {
@@ -120,7 +120,7 @@ function Page2(props: { language: string; }) {
         }
         
         setListOfLayerParams(newArray)
-    }
+    })
 
     const handlerChangeRadio = (value: number) => {
         setAngle(value)

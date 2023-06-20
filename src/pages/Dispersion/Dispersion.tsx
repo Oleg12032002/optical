@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Send from '@mui/icons-material/Send'
 import { AccordionLayer } from "../../components/Accordion2";
 import { ResultCalculationForChart } from "../../Interfaces/PropsInteface";
@@ -51,13 +51,13 @@ function Dispersion (props: { language: string; })  {
 
 
 
-    useEffect(()=>{setStrings(language==="en"?data2["en"]:data2["ua"]||null)},[language])
+    useEffect(()=>{setStrings(language==="en"?data2["en"]:data2["ua"]||null)},[data2, language])
 
    // const [listOfLayerParams, setListOfLayerParams] = React.useState<LayerParams[]>([]);
     const [spectrumRange, setSpectrumRange] = React.useState<number[]>([20, 37]);
     const [xArr, setXArr] = React.useState<number[]>([]);
     const [yArr, setYArr] = React.useState<number[]>([]);
-    const [angle, setAngle] = React.useState<number>(1);
+    // const [angle, setAngle] = React.useState<number>(1);
     
     // Методвідслідковує чи змінились дані для конкретного шару
     // перевіряти довжтину не потрібно, бо вона буде змінуватись в залежності від значення
@@ -93,7 +93,7 @@ function Dispersion (props: { language: string; })  {
     const [numberOfLayers, setNumberOfLayers] = React.useState<number>(2);
 
 
-    const hangleChangeNumberOfLayers = () => {
+    const hangleChangeNumberOfLayers = useCallback(() => {
         const newArray: number[] = []
         const newArray2: number[] = []
         for(let i = 0; i < numberOfLayers; i++) {
@@ -103,7 +103,7 @@ function Dispersion (props: { language: string; })  {
         
        setXArr(newArray);
        setYArr(newArray2);
-    }
+    }, [])
 
     // const handlerChangeRadio = (value: number) => {
     //     setAngle(value)

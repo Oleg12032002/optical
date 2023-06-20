@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import Send from '@mui/icons-material/Send'
 import { AccordionLayer } from "../../../components/AccordionLayer";
 import { LanguageContextType, LayerParams, ResultCalculationForChart } from "../../../Interfaces/PropsInteface";
@@ -101,7 +101,7 @@ function Page1(props: { language: string; }) {
     const [numberOfLayers, setNumberOfLayers] = React.useState<number>(2);
     const [krok, setKrok] = React.useState<number>(1);
 
-    const hangleChangeNumberOfLayers = () => {
+    const hangleChangeNumberOfLayers = useCallback(() => {
         const newArray: LayerParams[] = []
         
         for(let i = 0; i < numberOfLayers; i++) {
@@ -109,7 +109,7 @@ function Page1(props: { language: string; }) {
         }
         
         setListOfLayerParams(newArray)
-    }
+    }, [])
 
     const handlerChangeCheckbox = (index: number) => {
         arrayOfAngles[index] = !arrayOfAngles[index]
@@ -172,7 +172,7 @@ function Page1(props: { language: string; }) {
 
     useEffect(() => {
         hangleChangeNumberOfLayers();
-    }, [])
+    }, [ hangleChangeNumberOfLayers ])
 
 
     

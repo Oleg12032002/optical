@@ -122,16 +122,16 @@ const Calculation = (props: PropCalculation) => {
 
 
     // Знаходим середнє значення по всім ключовим точкам
-    const AverageValue = () => {
-        let res: number = 0;
-        let res2: number = 0;
-        for(let i = 0; i < kr1; i++)
-        {
-            res += 1 - TTS[i];
-            res2 += 1 - TTP[i];
-        }
-        return [ res / kr1, res2 / kr1 ];
-    }
+    // const AverageValue = () => {
+    //     let res: number = 0;
+    //     let res2: number = 0;
+    //     for(let i = 0; i < kr1; i++)
+    //     {
+    //         res += 1 - TTS[i];
+    //         res2 += 1 - TTP[i];
+    //     }
+    //     return [ res / kr1, res2 / kr1 ];
+    // }
 
 
 
