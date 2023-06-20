@@ -68,9 +68,9 @@ function Navbar(props: any) {
                         <a className="nav-link " aria-current="page" href='/optical_characteristics'>{strings.home}</a>
                     </li>
                     <li className="nav-item dropdown">
-                        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             {strings.os}
-                        </a>
+                        </div>
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a className="dropdown-item" href="/optical_characteristics/structures" target='_self'>{strings.modern}</a></li>
                             <li>
@@ -83,9 +83,9 @@ function Navbar(props: any) {
 
 
                     <li className="nav-item dropdown">
-                        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         {strings.transmissioncoefficient}
-                        </a>
+                        </div>
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a className="dropdown-item" href="/optical_characteristics/light_at_angle" target='_self'>{strings.movement}</a></li>
                             <li>

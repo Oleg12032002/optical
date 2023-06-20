@@ -122,7 +122,7 @@ function Page2(props: { language: string; }) {
         }
         
         setListOfLayerParams(newArray)
-    }, [])
+    }, [numberOfLayers])
 
     const handlerChangeRadio = (value: number) => {
         setAngle(value)

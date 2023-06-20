@@ -105,7 +105,7 @@ function Dispersion (props: { language: string; })  {
         
        setXArr(newArray);
        setYArr(newArray2);
-    }, [])
+    }, [numberOfLayers])
 
     // const handlerChangeRadio = (value: number) => {
     //     setAngle(value)

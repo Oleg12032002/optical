@@ -101,7 +101,7 @@ function Page3(props: { language: string; }) {
         }
         
         setListOfLayerParams(newArray)
-    }, [])
+    }, [numberOfLayers])
 
 
     useEffect(() => {

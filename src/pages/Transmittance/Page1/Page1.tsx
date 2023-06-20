@@ -111,7 +111,7 @@ function Page1(props: { language: string; }) {
         }
         
         setListOfLayerParams(newArray)
-    }, [])
+    }, [numberOfLayers])
 
     const handlerChangeCheckbox = (index: number) => {
         arrayOfAngles[index] = !arrayOfAngles[index]

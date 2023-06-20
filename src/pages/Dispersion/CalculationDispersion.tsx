@@ -164,9 +164,9 @@ const myFunction = (props: PropsDispersion) => {
     }
 
 
-    const sum = (a: number[]) => {
-        return a.reduce((summ, el) => summ + el, 0)
-    }
+    // const sum = (a: number[]) => {
+    //     return a.reduce((summ, el) => summ + el, 0)
+    // }
 
 
 
@@ -244,7 +244,7 @@ console.log(x, y);
     // })
 
     
-    let ys = 1 / n * sum(y)
+    // let ys = 1 / n * sum(y)
 
 
     // let minus = y.map((el) => (el - ys) * (el - ys))
